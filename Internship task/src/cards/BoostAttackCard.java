@@ -14,7 +14,7 @@ public class BoostAttackCard implements Card{
     }
 
     public int getBoost(){
-        return number;
+        return boost;
     }
 
     @Override

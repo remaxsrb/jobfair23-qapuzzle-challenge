@@ -2,6 +2,7 @@ import java.util.List;
 import cards.*;
 import game.Game;
 import player.Player;
+import player.Shuffler;
 import utility.Utility;
 
 
@@ -14,10 +15,14 @@ public static void main(String[] args) {
         List<Card> player1Deck = Utility.generateCards();
    
         // Create cards for player 2's deck
-       List<Card> player2Deck = Utility.generateCards();
+        List<Card> player2Deck = Utility.generateCards();
 
-        Player player1 = new Player(20,player1Deck);
-        Player player2 = new Player(20,player2Deck);
+        Player player1 = new Player(20,player1Deck, new Shuffler());
+        player1.populateDeck(player1.getShuffler().shuffleDeck(player1.getDeck()));
+
+        Player player2 = new Player(20,player2Deck, new Shuffler());
+        player2.populateDeck(player2.getShuffler().shuffleDeck(player2.getDeck()));
+
         // Create a game instance
 
         

@@ -92,7 +92,7 @@ public class Game {
             currentPlayer.printHand();
             System.out.println("Enter the number of the card you want to play (or enter 'end' to end your turn):");
            
-            String input = scanner.nextLine();
+            String input = scanner.nextLine(); //tests will be written using mocking
 
             if (input.equalsIgnoreCase("end")) {
                 break;
@@ -150,7 +150,7 @@ public class Game {
         String input;
     
         do {
-            input = scanner.nextLine();
+            input = scanner.nextLine(); //mock
         } while (!input.equalsIgnoreCase("take") && !input.equals("1") && !(input.equals(Integer.toString(opponentDamage)) && currentPlayer.findNumberInHand(Integer.parseInt(input))));
     
         return input;
