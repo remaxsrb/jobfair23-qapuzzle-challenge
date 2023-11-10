@@ -17,10 +17,10 @@ public static void main(String[] args) {
         // Create cards for player 2's deck
         List<Card> player2Deck = Utility.generateCards();
 
-        Player player1 = new Player(20,player1Deck, new Shuffler());
+        Player player1 = new Player(20,player1Deck);
         player1.populateDeck(player1.getShuffler().shuffleDeck(player1.getDeck()));
 
-        Player player2 = new Player(20,player2Deck, new Shuffler());
+        Player player2 = new Player(20,player2Deck);
         player2.populateDeck(player2.getShuffler().shuffleDeck(player2.getDeck()));
 
         // Create a game instance

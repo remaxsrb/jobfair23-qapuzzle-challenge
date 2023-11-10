@@ -31,7 +31,7 @@ public class TestPlayer {
     @Test
     public void testTakeDamage(){
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.takeDamage(1);
         assertEquals(19, player.getHealth());
     }
@@ -39,7 +39,7 @@ public class TestPlayer {
     @Test
     public void testDrawCard() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.drawInitialCards();
         player.drawCard();
         assertEquals(7, player.getHand().size());
@@ -48,7 +48,7 @@ public class TestPlayer {
     @Test
     public void testResetDamage() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.setDamage(3);
         assertEquals(3,player.getDamage());
         player.resetDamage();
@@ -58,28 +58,28 @@ public class TestPlayer {
     @Test
     public void testInitialDeckSizeIs25() {
     new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         assertEquals(25, player.getNumberOfCardsInDeck());
     }
 
     @Test
     public void testInitialDeckSizeIsNotBeLessThan25() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         assertNotEquals(24, player.getNumberOfCardsInDeck());
     }
 
     @Test
     public void testInitialDeckSizeIsNotBeGreaterThan25() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         assertNotEquals(26, player.getNumberOfCardsInDeck());
     }
 
     @Test
     public void testInitialHandSizeIs6() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.drawInitialCards();
         assertEquals(6, player.getNumberOfCardsInHand());
     }
@@ -87,7 +87,7 @@ public class TestPlayer {
     @Test
     public void testInitialHandSizeShouldNotBeGreaterThan6() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.drawInitialCards();
         assertNotEquals(7, player.getNumberOfCardsInHand());
     }
@@ -95,7 +95,7 @@ public class TestPlayer {
     @Test
     public void testInitialHandSizeShouldNotBeLessThan6() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.drawInitialCards();
         assertNotEquals(5, player.getNumberOfCardsInHand());
     }
@@ -104,7 +104,7 @@ public class TestPlayer {
     public void whenDeckIsShuffledOrderOfCardsShouldChange()
     {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.populateDeck(player.getShuffler().shuffleDeck(player.getDeck()));
 
         List<Card> oldOrder = new ArrayList<>(player.getDeck());
@@ -267,7 +267,7 @@ public class TestPlayer {
     @Test
     public void testUserHealthDoesNotDecreaseBelowZero() {
         new Utility();
-        Player player = new Player(20, Utility.generateCards(), new Shuffler());
+        Player player = new Player(20, Utility.generateCards());
         player.takeDamage(21);
 
         assertNotEquals(-1, player.getHealth());

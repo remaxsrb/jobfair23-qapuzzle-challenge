@@ -58,6 +58,18 @@ public class Player {
 
     }
 
+    public Player(int health, List<Card> deck) {
+        this.health = health;
+        this.deck = deck;
+        this.hand = new ArrayList<>();
+        this.shuffler = new Shuffler();
+        lastPlayedCard = null;
+        attackingStatus = false;
+        damage = 0;
+
+
+    }
+
     public void takeDamage(int amountOfDamage){
 
         if(health<amountOfDamage) health = 0;

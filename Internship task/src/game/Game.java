@@ -40,6 +40,15 @@ public class Game {
 
         // Game loop
         while (!getGameEnded()) {
+
+
+            //HP check for player 1
+            if (!hasHealth(player1)) {
+                System.out.println("Player 2 wins!");
+                gameEnded = true;
+                break;
+            }
+
             // Player 1's turn
             System.out.println("Player 1's Turn");
             if(isPlayerWithoutOptionsToPlay(player1)){
@@ -50,9 +59,12 @@ public class Game {
 
             playTurn(player1, player2);
 
-            if (!hasHealth(player1)) {
-                System.out.println("Player 2 wins!");
-                 gameEnded = true;
+
+            //HP check player 2
+
+            if (!hasHealth(player2)) {
+                System.out.println("Player 1 wins!");
+                gameEnded = true;
                 break;
             }
 
@@ -66,11 +78,6 @@ public class Game {
 
             playTurn(player2, player1);
 
-            if (!hasHealth(player2)) {
-                System.out.println("Player 1 wins!");
-                gameEnded = true;
-                break;
-            }
         }
     }
 
@@ -92,7 +99,7 @@ public class Game {
             currentPlayer.printHand();
             System.out.println("Enter the number of the card you want to play (or enter 'end' to end your turn):");
            
-            String input = scanner.nextLine(); //tests will be written using mocking
+            String input = scanner.nextLine();
 
             if (input.equalsIgnoreCase("end")) {
                 break;
@@ -150,10 +157,56 @@ public class Game {
         String input;
     
         do {
-            input = scanner.nextLine(); //mock
+            input = scanner.nextLine();
         } while (!input.equalsIgnoreCase("take") && !input.equals("1") && !(input.equals(Integer.toString(opponentDamage)) && currentPlayer.findNumberInHand(Integer.parseInt(input))));
     
         return input;
+    }
+
+    public void testCommandStartGameWithDeckAndHandSizeAtZero() {
+
+        player1.getDeck().clear();
+        player1.getHand().clear();
+
+        while (!getGameEnded()) {
+
+
+            //HP check for player 1
+            if (!hasHealth(player1)) {
+                System.out.println("Player 2 wins!");
+                gameEnded = true;
+                break;
+            }
+
+            // Player 1's turn
+            System.out.println("Player 1's Turn");
+            if (isPlayerWithoutOptionsToPlay(player1)) {
+                System.out.println("You lost all your cards... \r\n Player 2 wins!");
+                gameEnded = true;
+                break;
+            }
+
+            playTurn(player1, player2);
+
+//
+//            //HP check player 2
+//
+//            if (!hasHealth(player2)) {
+//                System.out.println("Player 1 wins!");
+//                gameEnded = true;
+//                break;
+//            }
+//
+//            // Player 2's turn
+//            System.out.println("Player 2's Turn");
+//            if (isPlayerWithoutOptionsToPlay(player2)) {
+//                System.out.println("You lost all your cards... \r\n Player 1 wins!");
+//                gameEnded = true;
+//                break;
+//            }
+//
+//            playTurn(player2, player1);
+        }
     }
     
 }
